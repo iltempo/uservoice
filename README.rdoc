@@ -24,6 +24,9 @@ Generate files for your app:
 Where <key> is the Uservoice account name and <forum> the id of your main forum.
 Find both settings in widgets section of the admin interface of Uservoice.
 
+Default properties are stored in a file named uservoice.yml in the config directory
+of your Rails application. Make it fit to your needs.
+
 Enable Uservoice in controllers of your choice. Add to ApplicationController
 directly to enable uservoice for every controller.
 
