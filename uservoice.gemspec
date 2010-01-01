@@ -35,7 +35,8 @@ Gem::Specification.new do |s|
      "test/helper.rb",
      "test/test_uservoice.rb",
      "test/test_uservoice_generator.rb",
-     "test/uservoice_test.yml"
+     "test/uservoice_test.yml",
+     "uservoice.gemspec"
   ]
   s.homepage = %q{http://github.com/iltempo/uservoice}
   s.rdoc_options = ["--charset=UTF-8"]
