@@ -1,0 +1,58 @@
+= Uservoice feedback for Ruby on Rails
+
+This adds {Uservoice}[http://www.uservoice.com] feedback to your
+Rails application. You can set Uservoice properties in a central configuration
+file and override settings like forum id (for payed accounts) in your layout or
+view.
+
+== Installation
+
+=== As a gem
+  gem install uservoice --source http://gemcutter.org
+
+=== As a Rails dependency
+  config.gem 'uservoice', :source => 'http://gemcutter.org'
+
+=== As a Rails plugin
+  ./script/plugin install http://github.com/iltempo/uservoice.git
+
+
+== Configuration
+
+Generate files for your app:
+  ./script/generate uservoice <key> <forum>
+Where <key> is the Uservoice account name and <forum> the id of your main forum.
+Find both settings in widgets section of the admin interface of Uservoice.
+
+Enable Uservoice in controllers of your choice. Add to ApplicationController
+directly to enable uservoice for every controller.
+
+  class MyController < ApplicationController
+    enable_uservoice
+    ...
+  end
+
+Link Uservoice javascript file and add configuration to HTML HEAD section of
+your template file:
+  <%= javascript_include_tag 'uservoice' %>
+  <%= uservoice_config_javascript %>
+
+You can even override default uservoice settings in your view:
+  <%= uservoice_config_javascript(:alignment => 'right', :forum => 12983) %>
+
+
+== Note on Patches/Pull Requests
+
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a
+  commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2010 {il tempo}[http://github.com/iltempo] -
+{Alexander Greim}[http://github.com/iltempo], released under the MIT license

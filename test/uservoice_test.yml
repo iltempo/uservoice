@@ -1,0 +1,12 @@
+uservoice_options:
+  # required
+  key: test
+  host: test.uservoice.com
+  forum: 12345
+  showTab: true
+  # optional
+  alignment: left
+  background_color: "#f00"
+  text_color: white
+  hover_color: "#06C"
+  lang: en
