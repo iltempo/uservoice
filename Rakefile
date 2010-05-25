@@ -6,13 +6,12 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "uservoice"
     gem.summary = %Q{Uservoice for your Rails application}
-    gem.description = %Q{This adds Uservoice user feedback to your Rails application.
-      You can set Uservoice properties in a central configuration file and override
-      settings like forum id (for payed accounts) in your layout or view.}
+    gem.description = %Q{This adds Uservoice support to your Rails application
+      including single sign-on.}
     gem.email = 'alexxx@iltempo.de'
     gem.homepage = 'http://github.com/iltempo/uservoice'
     gem.authors = ['Alexander Greim']
-    gem.version = '0.1.0'
+    gem.version = '0.2.0'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

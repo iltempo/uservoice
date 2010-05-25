@@ -1,6 +1,6 @@
 class UservoiceGenerator < Rails::Generator::Base
   def manifest
-    unless args.length == 2
+    unless [2, 3].include?(args.length)
       puts usage_message
       exit 1
     end

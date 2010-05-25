@@ -4,11 +4,11 @@ Name
 Description:
     This generator creates all files needed for uservoice integration.
 
-    ./script/generate uservoice <uservoice_key> <main_forum_id>
+    ./script/generate uservoice <uservoice_key> <main_forum_id> [<api_key>]
 
     Please add to head section of your layout file:
       <%= javascript_include_tag 'uservoice' %>
       <%= uservoice_config_javascript %>
 
 Example:
-    ./script/generate uservoice mypage 12345
+    ./script/generate uservoice mypage 12345 myapikey

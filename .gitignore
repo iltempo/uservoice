@@ -1,4 +1,4 @@
 .DS_Store
 rdoc/
 coverage/
-pkg/uservoice-0.1.0.gem
+pkg/

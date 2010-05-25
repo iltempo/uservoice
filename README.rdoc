@@ -1,9 +1,7 @@
 = Uservoice feedback for Ruby on Rails
 
-This adds {Uservoice}[http://www.uservoice.com] feedback to your
-Rails application. You can set Uservoice properties in a central configuration
-file and override settings like forum id (for payed accounts) in your layout or
-view.
+This adds {Uservoice}[http://www.uservoice.com] support to your
+Rails application including single sign-on.
 
 == Installation
 
@@ -20,28 +18,42 @@ view.
 == Configuration
 
 Generate files for your app:
-  ./script/generate uservoice <key> <forum>
+  ./script/generate uservoice <key> <forum> [<api_key>]
 Where <key> is the Uservoice account name and <forum> the id of your main forum.
 Find both settings in widgets section of the admin interface of Uservoice.
+Your API key <api_key> can be found in the API section of the admin documentation.
 
-Default properties are stored in a file named uservoice.yml in the config directory
-of your Rails application. Make it fit to your needs.
+Default properties are stored in a file named uservoice.yml in the config
+directory of your Rails application. Make it fitting to your needs.
 
-Enable Uservoice in controllers of your choice. Add to ApplicationController
-directly to enable uservoice for every controller.
-
-  class MyController < ApplicationController
-    enable_uservoice
-    ...
-  end
-
-Link Uservoice javascript file and add configuration to HTML HEAD section of
-your template file:
+Link Uservoice javascript file and add configuration to HTML HEAD
+section of your template file:
   <%= javascript_include_tag 'uservoice' %>
   <%= uservoice_config_javascript %>
 
-You can even override default uservoice settings in your view:
+You can override default uservoice settings in your view:
   <%= uservoice_config_javascript(:alignment => 'right', :forum => 12983) %>
+
+
+== Single Sign-on
+
+Uservoice is allowing single sign-on starting from the Bronze plan.
+http://uservoice.com/signup?ref=nav
+
+To use single sign-on with on uservoice you have to set your api_key in 
+config/uservoice.yml. Find it on
+https://ACCOUNT.uservoice.com/admin2/docs#/legacy_api
+
+Set user data in your controller action.
+   def index
+     set_uservoice_sso(:guid => @current_user.id, :email => @current_user.email)
+   end
+
+Parameter <em>:guid</em> should be unique identifier for example the user id in your
+system. Uservoice recommends setting <em>:email</em> parameter to enable users to get
+updates and notifications via email.
+See https://ACCOUNT.uservoice.com/admin2/docs#/sso for a list of parameters
+available.
 
 
 == Note on Patches/Pull Requests

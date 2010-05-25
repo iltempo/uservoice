@@ -6,16 +6,21 @@ ActiveSupport::Dependencies.load_once_paths.delete(path)
 module Uservoice
 end
 
-require 'class_methods'
+require 'cgi'
+require 'rubygems'
+require 'ezcrypto'
+require 'uservoice_token'
 require 'instance_methods'
 
 module ActionController #:nodoc:
   class Base #:nodoc:
-    cattr_accessor :uservoice_configuration
-    before_filter :uservoice_init
     helper :uservoice
+    before_filter :load_uservoice_config
 
     include Uservoice::InstanceMethods
-    extend Uservoice::ClassMethods
+
+    def self.enable_uservoice
+      warn "[DEPRECATION] 'enable_uservoice' is deprecated. Uservoice is loaded by default in every controller now."
+    end
   end
 end

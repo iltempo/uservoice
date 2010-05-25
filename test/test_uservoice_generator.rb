@@ -26,9 +26,15 @@ class UservoiceGeneratorTest < Test::Unit::TestCase
   def test_config_file_contains_settings
     run_generator('uservoice', 'my_name', '98765')
     config = read_config_file
-    assert_equal 'my_name', config['key']
-    assert_equal 'my_name.uservoice.com', config['host']
-    assert_equal 98765, config['forum']
+    assert_equal 'my_name', config['uservoice_options']['key']
+    assert_equal 'my_name.uservoice.com', config['uservoice_options']['host']
+    assert_equal 98765, config['uservoice_options']['forum']
+  end
+
+  def test_config_file_contains_api_key_if_given
+    run_generator('uservoice', 'my_name', '98765', 'testapikey')
+    config = read_config_file
+    assert_equal 'testapikey', config['uservoice_api']['api_key']
   end
 
   private
@@ -44,7 +50,7 @@ class UservoiceGeneratorTest < Test::Unit::TestCase
     end
 
     def read_config_file
-      YAML::load(IO.read(File.join(fake_rails_root, 'config/uservoice.yml')))['uservoice_options']
+      YAML::load(IO.read(File.join(fake_rails_root, 'config/uservoice.yml')))
     end
 
     def run_generator(*options)

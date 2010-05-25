@@ -5,14 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{uservoice}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Greim"]
-  s.date = %q{2010-01-01}
-  s.description = %q{This adds Uservoice user feedback to your Rails application.
-      You can set Uservoice properties in a central configuration file and override
-      settings like forum id (for payed accounts) in your layout or view.}
+  s.date = %q{2010-05-25}
+  s.description = %q{This adds Uservoice support to your Rails application
+      including single sign-on.}
   s.email = %q{alexxx@iltempo.de}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -29,12 +28,15 @@ Gem::Specification.new do |s|
      "generators/uservoice/uservoice_generator.rb",
      "init.rb",
      "lib/uservoice.rb",
-     "lib/uservoice/class_methods.rb",
      "lib/uservoice/instance_methods.rb",
      "lib/uservoice/uservoice_helper.rb",
+     "lib/uservoice/uservoice_token.rb",
      "test/helper.rb",
      "test/test_uservoice.rb",
      "test/test_uservoice_generator.rb",
+     "test/test_uservoice_sso.rb",
+     "test/test_uservoice_token.rb",
+     "test/uservoice_sso_test.yml",
      "test/uservoice_test.yml",
      "uservoice.gemspec"
   ]
@@ -46,7 +48,9 @@ Gem::Specification.new do |s|
   s.test_files = [
     "test/helper.rb",
      "test/test_uservoice.rb",
-     "test/test_uservoice_generator.rb"
+     "test/test_uservoice_generator.rb",
+     "test/test_uservoice_sso.rb",
+     "test/test_uservoice_token.rb"
   ]
 
   if s.respond_to? :specification_version then

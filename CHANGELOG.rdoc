@@ -1,0 +1,14 @@
+== v0.2.0 (2010-05-25)
+
+* Enhancements
+
+  * added single sign-on support
+
+* Changes
+
+  * enable_uservoice depricated as config will be loaded by default
+  * new config parameter uservoice_api[:api_key] in uservoice.yml
+
+== v0.1.0 (2010-01-01)
+
+* initial release including support for feedback button
