@@ -11,7 +11,7 @@ begin
     gem.email = 'alexxx@iltempo.de'
     gem.homepage = 'http://github.com/iltempo/uservoice'
     gem.authors = ['Alexander Greim']
-    gem.version = '0.2.1'
+    gem.version = '0.2.2'
     gem.add_dependency('ezcrypto', '>= 0.7.2')
     gem.has_rdoc = true
     gem.extra_rdoc_files = ["README.rdoc", "CHANGELOG.rdoc", "LICENSE"]
