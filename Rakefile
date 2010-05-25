@@ -11,7 +11,8 @@ begin
     gem.email = 'alexxx@iltempo.de'
     gem.homepage = 'http://github.com/iltempo/uservoice'
     gem.authors = ['Alexander Greim']
-    gem.version = '0.2.0'
+    gem.version = '0.2.1'
+    gem.add_dependency('ezcrypto', '>= 0.7.2')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
