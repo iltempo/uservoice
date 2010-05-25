@@ -37,6 +37,9 @@ You can override default uservoice settings in your view:
 
 == Single Sign-on
 
+Single sign-on authenticates your users automatically against the Uservoice
+service. The second login is not needed any more.
+
 Uservoice is allowing single sign-on starting from the Bronze plan.
 http://uservoice.com/signup?ref=nav
 

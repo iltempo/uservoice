@@ -13,6 +13,8 @@ begin
     gem.authors = ['Alexander Greim']
     gem.version = '0.2.1'
     gem.add_dependency('ezcrypto', '>= 0.7.2')
+    gem.has_rdoc = true
+    gem.extra_rdoc_files = ["README.rdoc", "CHANGELOG.rdoc", "LICENSE"]
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
