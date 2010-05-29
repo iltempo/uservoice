@@ -1,20 +1,15 @@
-path = File.join(File.dirname(__FILE__), 'uservoice')
-$LOAD_PATH << path
-ActiveSupport::Dependencies.load_paths << path
-ActiveSupport::Dependencies.load_once_paths.delete(path)
-
 module Uservoice
 end
 
 require 'cgi'
 require 'rubygems'
 require 'ezcrypto'
-require 'uservoice_token'
-require 'instance_methods'
+require 'uservoice/token'
+require 'uservoice/instance_methods'
+require 'uservoice/view_helpers'
 
 module ActionController #:nodoc:
   class Base #:nodoc:
-    helper :uservoice
     before_filter :load_uservoice_config
 
     include Uservoice::InstanceMethods
@@ -24,3 +19,5 @@ module ActionController #:nodoc:
     end
   end
 end
+
+ActionView::Base.send(:include, Uservoice::UservoiceViewHelpers)
