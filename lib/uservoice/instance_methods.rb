@@ -9,16 +9,6 @@
 module Uservoice
   module InstanceMethods
 
-    # Loads uservoice configuration into a controller
-    # instance variable
-    #
-    def load_uservoice_config
-      @uservoice_configuration = begin
-        configuration = YAML::load(IO.read(uservoice_configuration_file))
-        HashWithIndifferentAccess.new(configuration)
-      end
-    end
-
     # Set uservoice configuration file path.
     # Can be overridden.
     #
@@ -33,9 +23,16 @@ module Uservoice
     #
     def set_uservoice_sso(user_data)
       @uservoice_sso_token = Uservoice::Token.new(
-        @uservoice_configuration['uservoice_options']['key'],
-        @uservoice_configuration['uservoice_api']['api_key'],
+        uservoice_configuration['uservoice_options']['key'],
+        uservoice_configuration['uservoice_api']['api_key'],
         user_data)
+    end
+
+    def uservoice_configuration
+      @@uservoice_configuration = begin
+        configuration = YAML::load(IO.read(uservoice_configuration_file))
+        HashWithIndifferentAccess.new(configuration)
+      end
     end
 
   end
