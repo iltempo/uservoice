@@ -2,7 +2,6 @@ module Uservoice
 end
 
 require 'cgi'
-require 'rubygems'
 require 'ezcrypto'
 require 'uservoice/token'
 require 'uservoice/instance_methods'
