@@ -12,6 +12,9 @@ begin
     gem.authors = ['Alexander Greim']
     gem.version = '0.2.2'
     gem.add_dependency('ezcrypto', '>= 0.7.2')
+    gem.add_dependency('activesupport', '>= 2.1')
+    gem.add_dependency('actionpack', '>= 2.1')
+    gem.add_dependency('rails', '>= 2.1')
     gem.has_rdoc = true
     gem.extra_rdoc_files = ["README.rdoc", "CHANGELOG.rdoc", "LICENSE"]
   end
