@@ -28,8 +28,8 @@ class UservoiceSsoTest < ActionController::TestCase
 
   def test_sso_token_set
     get :action_with_sso
-    assert_match Regexp.new('<script type="text/javascript">\s*var uservoiceOptions = .*\s*</script>'), @response.body
-    assert_match Regexp.new('"params":\{"sso":".*"\}'), @response.body
+    assert_match Regexp.new('<script type="text/javascript">.*var uservoiceOptions = .*\s*</script>', Regexp::MULTILINE), @response.body
+    assert_match /"params":\{"sso":".*"\}/, @response.body
   end
 
   def test_api_key_not_to_appear

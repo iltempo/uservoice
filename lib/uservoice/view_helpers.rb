@@ -15,7 +15,7 @@ module Uservoice
     # available.
     #
     def uservoice_config_javascript(options={})
-      config = @uservoice_configuration['uservoice_options'].dup
+      config = uservoice_configuration['uservoice_options'].dup
       config.merge!(options)
 
       if @uservoice_sso_token
@@ -24,6 +24,14 @@ module Uservoice
 
       <<-EOS
         <script type=\"text/javascript\">
+          function _loadUserVoice() {
+            var s = document.createElement('script');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
+            document.getElementsByTagName('head')[0].appendChild(s);
+          }
+          _loadSuper = window.onload;
+          window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
           var uservoiceOptions = #{config.to_json};
         </script>
       EOS

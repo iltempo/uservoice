@@ -42,23 +42,22 @@ class UservoiceControllerTest < ActionController::TestCase
 
   def test_config_javascript_default
     get :config_js_default
-    assert_match Regexp.new('<script type="text/javascript">\s*var uservoiceOptions = .*\s*</script>'), @response.body
-    assert_match Regexp.new('"host":"test.uservoice.com"'), @response.body
-    assert_match Regexp.new('"forum":12345'), @response.body
+    assert_match Regexp.new('^\s*<script type="text/javascript">(.*)</script>\s*$', Regexp::MULTILINE), @response.body
+    assert_match /var uservoiceOptions = \{.*\}/, @response.body
+    assert_match /"host":"test.uservoice.com"/, @response.body
+    assert_match /"forum":12345/, @response.body
   end
 
   def test_config_custom_forum
     get :config_js_custom_forum
-    assert_match Regexp.new('<script type="text/javascript">\s*var uservoiceOptions = .*\s*</script>'), @response.body
-    assert_match Regexp.new('"forum":815'), @response.body
-    assert_no_match Regexp.new('"forum":12345'), @response.body
+    assert_match /"forum":815/, @response.body
+    assert_no_match /"forum":12345/, @response.body
   end
 
   def test_config_custom_alignment
     get :config_js_custom_alignment
-    assert_match Regexp.new('<script type="text/javascript">\s*var uservoiceOptions = .*\s*</script>'), @response.body
-    assert_match Regexp.new('"forum":12345'), @response.body
-    assert_match Regexp.new('"alignment":"right"'), @response.body
+    assert_match /"forum":12345/, @response.body
+    assert_match /"alignment":"right"/, @response.body
   end
 end
 
