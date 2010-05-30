@@ -15,10 +15,7 @@ class UservoiceGeneratorTest < Test::Unit::TestCase
     run_generator('uservoice', 'test', '12345')
     new_files = file_list - @original_files
     expected_files = ['config',
-                      'config/uservoice.yml',
-                      'public',
-                      'public/javascripts',
-                      'public/javascripts/uservoice.js']
+                      'config/uservoice.yml']
 
     assert_equal expected_files, new_files
   end
