@@ -18,8 +18,11 @@ module Uservoice
       config = uservoice_configuration['uservoice_options'].dup
       config.merge!(options)
 
-      if @uservoice_sso_token
-        config.merge!({:params => {:sso => @uservoice_sso_token.data}})
+      if config[:sso] && config[:sso][:guid]
+        config.merge!(:params => {:sso => Uservoice::Token.new(
+          uservoice_configuration['uservoice_options']['key'],
+          uservoice_configuration['uservoice_api']['api_key'],
+          config.delete(:sso)).to_s})
       end
 
       <<-EOS

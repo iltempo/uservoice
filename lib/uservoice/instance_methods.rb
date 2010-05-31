@@ -16,18 +16,9 @@ module Uservoice
       "#{RAILS_ROOT}/config/uservoice.yml"
     end
 
-    # Generates token for uservoice single sign-on
-    # that will be delivered by uservoice helper.
-    # See https://ACCOUNT.uservoice.com/admin2/docs#/sso for
-    # properties available.
+    # Returns the uservoice configuration hash.
+    # It's been lazy loaded and cached in the controller class.
     #
-    def set_uservoice_sso(user_data)
-      @uservoice_sso_token = Uservoice::Token.new(
-        uservoice_configuration['uservoice_options']['key'],
-        uservoice_configuration['uservoice_api']['api_key'],
-        user_data)
-    end
-
     def uservoice_configuration
       @@uservoice_configuration = begin
         configuration = YAML::load(IO.read(uservoice_configuration_file))

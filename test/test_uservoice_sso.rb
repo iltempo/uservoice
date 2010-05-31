@@ -7,8 +7,7 @@ class MyUservoiceSsoController < ActionController::Base
   end
 
   def action_with_sso
-    set_uservoice_sso(:guid => 123, :display_name => 'Bancheff', :email => 'chef@bahn.de')
-    render :inline => '<%= uservoice_config_javascript %>'
+    render :inline => '<%= uservoice_config_javascript(:sso => {:guid => 123, :display_name => "Bancheff", :email => "chef@bahn.de"}) %>'
   end
 
 end

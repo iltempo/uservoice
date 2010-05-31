@@ -26,19 +26,17 @@ Your API key <api_key> can be found in the API section of the admin documentatio
 Default properties are stored in a file named uservoice.yml in the config
 directory of your Rails application. Make it fitting to your needs.
 
-Link Uservoice javascript file and add configuration to HTML HEAD
-section of your template file:
-  <%= javascript_include_tag 'uservoice' %>
+Add javascript function and configuration to HTML HEAD section of your template file:
   <%= uservoice_config_javascript %>
 
 You can override default uservoice settings in your view:
   <%= uservoice_config_javascript(:alignment => 'right', :forum => 12983) %>
 
 
-== Single Sign-on
+== Single Sign-On
 
 Single sign-on authenticates your users automatically against the Uservoice
-service. The second login is not needed any more.
+service. A second login is not needed any more.
 
 Uservoice is allowing single sign-on starting from the Bronze plan.
 http://uservoice.com/signup?ref=nav
@@ -47,12 +45,10 @@ To use single sign-on with on uservoice you have to set your api_key in
 config/uservoice.yml. Find it on
 https://ACCOUNT.uservoice.com/admin2/docs#/legacy_api
 
-Set user data in your controller action.
-   def index
-     set_uservoice_sso(:guid => @current_user.id, :email => @current_user.email)
-   end
+The user properties can be set via the :sso parameter.
+     <%= uservoice_config_javascript(:sso => {:guid => @current_user.id, :email => @current_user.email}) %>
 
-Parameter <em>:guid</em> should be unique identifier for example the user id in your
+Parameter <em>:guid</em> should be unique identifier, for example the user id in your
 system. Uservoice recommends setting <em>:email</em> parameter to enable users to get
 updates and notifications via email.
 See https://ACCOUNT.uservoice.com/admin2/docs#/sso for a list of parameters
