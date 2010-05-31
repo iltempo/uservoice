@@ -9,6 +9,13 @@
 module Uservoice
   module InstanceMethods
 
+    # Making helper method available when module
+    # gets included into ActionController::Base.
+    #
+    def self.included(mod)
+      mod.send(:helper_method, :uservoice_configuration)
+    end
+
     # Set uservoice configuration file path.
     # Can be overridden.
     #
