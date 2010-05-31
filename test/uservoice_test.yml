@@ -8,3 +8,6 @@ uservoice_options:
   text_color: white
   hover_color: "#06C"
   lang: en
+
+uservoice_api:
+  api_key: testapikey

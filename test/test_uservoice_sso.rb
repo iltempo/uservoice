@@ -3,7 +3,7 @@ require 'helper'
 class MyUservoiceSsoController < ActionController::Base
 
   def uservoice_configuration_file
-    File.dirname(__FILE__) + '/uservoice_sso_test.yml'
+    File.dirname(__FILE__) + '/uservoice_test.yml'
   end
 
   def action_with_sso
