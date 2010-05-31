@@ -54,7 +54,6 @@ updates and notifications via email.
 See https://ACCOUNT.uservoice.com/admin2/docs#/sso for a list of parameters
 available.
 
-This project is using {Semantic Versioning}[http://semver.org]
 
 == Note on Patches/Pull Requests
 
@@ -66,6 +65,10 @@ This project is using {Semantic Versioning}[http://semver.org]
   (if you want to have your own version, that is fine but bump version in a
   commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
+
+
+This project is using {Semantic Versioning}[http://semver.org].
+
 
 == Copyright
 
