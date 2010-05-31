@@ -54,6 +54,7 @@ updates and notifications via email.
 See https://ACCOUNT.uservoice.com/admin2/docs#/sso for a list of parameters
 available.
 
+This project is using {Semantic Versioning}[http://semver.org]
 
 == Note on Patches/Pull Requests
 
