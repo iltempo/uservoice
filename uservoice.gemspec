@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Greim"]
-  s.date = %q{2010-05-25}
+  s.date = %q{2010-05-31}
   s.description = %q{This adds Uservoice support to your Rails application
       including single sign-on.}
   s.email = %q{alexxx@iltempo.de}
@@ -25,20 +25,18 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "generators/uservoice/USAGE",
-     "generators/uservoice/templates/uservoice.js",
      "generators/uservoice/templates/uservoice_template.yml",
      "generators/uservoice/uservoice_generator.rb",
      "init.rb",
      "lib/uservoice.rb",
      "lib/uservoice/instance_methods.rb",
-     "lib/uservoice/uservoice_helper.rb",
-     "lib/uservoice/uservoice_token.rb",
+     "lib/uservoice/token.rb",
+     "lib/uservoice/view_helpers.rb",
      "test/helper.rb",
      "test/test_uservoice.rb",
      "test/test_uservoice_generator.rb",
      "test/test_uservoice_sso.rb",
      "test/test_uservoice_token.rb",
-     "test/uservoice_sso_test.yml",
      "test/uservoice_test.yml",
      "uservoice.gemspec"
   ]
@@ -61,11 +59,20 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<ezcrypto>, [">= 0.7.2"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 2.1"])
+      s.add_runtime_dependency(%q<actionpack>, [">= 2.1"])
+      s.add_runtime_dependency(%q<rails>, [">= 2.1"])
     else
       s.add_dependency(%q<ezcrypto>, [">= 0.7.2"])
+      s.add_dependency(%q<activesupport>, [">= 2.1"])
+      s.add_dependency(%q<actionpack>, [">= 2.1"])
+      s.add_dependency(%q<rails>, [">= 2.1"])
     end
   else
     s.add_dependency(%q<ezcrypto>, [">= 0.7.2"])
+    s.add_dependency(%q<activesupport>, [">= 2.1"])
+    s.add_dependency(%q<actionpack>, [">= 2.1"])
+    s.add_dependency(%q<rails>, [">= 2.1"])
   end
 end
 
