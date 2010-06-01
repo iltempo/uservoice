@@ -27,7 +27,7 @@ module Uservoice
     # It's been lazy loaded and cached in the controller class.
     #
     def uservoice_configuration
-      @@uservoice_configuration = begin
+      @@uservoice_configuration ||= begin
         configuration = YAML::load(IO.read(uservoice_configuration_file))
         HashWithIndifferentAccess.new(configuration)
       end
