@@ -1,3 +1,4 @@
+<% test_value = "testing 1 2 3" %>
 uservoice_options:
   key: test
   host: test.uservoice.com
@@ -8,6 +9,7 @@ uservoice_options:
   text_color: white
   hover_color: "#06C"
   lang: en
+  erb_value: <%= test_value %>
 
 uservoice_api:
   api_key: testapikey

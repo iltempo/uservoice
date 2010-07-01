@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Greim"]
-  s.date = %q{2010-06-09}
+  s.date = %q{2010-07-01}
   s.description = %q{This adds Uservoice support to your Rails application
       including single sign-on.}
   s.email = %q{alexxx@iltempo.de}
