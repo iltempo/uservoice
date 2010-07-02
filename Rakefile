@@ -10,7 +10,7 @@ begin
     gem.email = 'alexxx@iltempo.de'
     gem.homepage = 'http://github.com/iltempo/uservoice'
     gem.authors = ['Alexander Greim']
-    gem.version = '0.3.0'
+    gem.version = '0.3.1'
     gem.add_dependency('ezcrypto', '>= 0.7.2')
     gem.add_dependency('activesupport', '>= 2.1')
     gem.add_dependency('actionpack', '>= 2.1')
