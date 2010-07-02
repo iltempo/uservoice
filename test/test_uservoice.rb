@@ -21,6 +21,10 @@ class MyUservoiceController < ActionController::Base
   def config_js_custom_alignment
     render :inline => "<%= uservoice_config_javascript(:alignment => 'right') %>"
   end
+
+  def config_js_erb
+    render :inline => "<%= uservoice_config_javascript %>"
+  end
 end
 
 
@@ -37,6 +41,7 @@ class UservoiceControllerTest < ActionController::TestCase
       map.connect 'config_js_default', :controller => 'my_uservoice', :action => :config_js_default
       map.connect 'config_js_custom_forum', :controller => 'my_uservoice', :action => :config_js_custom_forum
       map.connect 'config_js_custom_alignment', :controller => 'my_uservoice', :action => :config_js_custom_alignment
+      map.connect 'config_js_erb', :controller => 'my_uservoice', :action => :config_js_erb
     end
   end
 
@@ -58,6 +63,11 @@ class UservoiceControllerTest < ActionController::TestCase
     get :config_js_custom_alignment
     assert_match /"forum":12345/, @response.body
     assert_match /"alignment":"right"/, @response.body
+  end
+
+  def test_config_erb
+    get :config_js_erb
+    assert_match /"erb_value":"testing 1 2 3"/, @response.body
   end
 end
 

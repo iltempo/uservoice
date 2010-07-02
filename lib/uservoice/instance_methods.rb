@@ -6,6 +6,8 @@
 # Copyright:: Copyright (c) 2010 il tempo
 # License::   Distributes under the same terms as Ruby
 
+require "erb"
+
 module Uservoice
   module InstanceMethods
 
@@ -28,7 +30,8 @@ module Uservoice
     #
     def uservoice_configuration
       @@uservoice_configuration ||= begin
-        configuration = YAML::load(IO.read(uservoice_configuration_file))
+        config = ERB.new(IO.read(uservoice_configuration_file)).result
+        configuration = YAML::load(config)
         HashWithIndifferentAccess.new(configuration)
       end
     end
