@@ -2,3 +2,5 @@
 rdoc/
 coverage/
 pkg/
+.rvmrc
+*.rbc
