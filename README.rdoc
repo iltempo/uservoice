@@ -24,7 +24,8 @@ Find both settings in widgets section of the admin interface of Uservoice.
 Your API key <api_key> can be found in the API section of the admin documentation.
 
 Default properties are stored in a file named uservoice.yml in the config
-directory of your Rails application. Make it fitting to your needs.
+directory of your Rails application. Make it fitting to your needs. Feel free to
+use erb expressions.
 
 Add javascript function and configuration to HTML HEAD section of your template file:
   <%= uservoice_config_javascript %>
