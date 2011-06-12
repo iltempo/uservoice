@@ -22,7 +22,7 @@ module Uservoice
     # Can be overridden.
     #
     def uservoice_configuration_file #:nodoc:
-      "#{RAILS_ROOT}/config/uservoice.yml"
+      "#{::Rails.root}/config/uservoice.yml"
     end
 
     # Returns the uservoice configuration hash.
