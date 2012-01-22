@@ -1,8 +1,8 @@
 uservoice_options:
   # required
-  key: <%= args.first %>
-  host: <%= args.first %>.uservoice.com
-  forum: <%= args.second %>
+  key: XXX>
+  host: XXX.uservoice.com
+  forum: XXX
   # optional
   showTab: true
   alignment: left
@@ -12,4 +12,4 @@ uservoice_options:
   lang: en
 
 uservoice_api:
-  api_key: <%= args.third %>
+  api_key: XXX

@@ -19,18 +19,16 @@ module Uservoice
       config.merge!(options)
       script_key = config['script_key']
       if config[:sso] && config[:sso][:guid]
-        opts = {:params => {:sso => Uservoice::Token.new(
+        config.merge!({:params => {:sso => Uservoice::Token.new(
                                                          uservoice_configuration['uservoice_options']['key'],
                                                          uservoice_configuration['uservoice_api']['api_key'],
                                                          config.delete(:sso)).to_s}
-        }
-      else
-        opts = {}
+        })
       end
 
-      <<-EOS
+      script = <<-EOS
         <script type=\"text/javascript\">
-          var uvOptions = #{opts.to_json};
+          var uvOptions = #{config.to_json};
           (function() {
             var uv = document.createElement('script');
             uv.type = 'text/javascript'; uv.async = true;
@@ -40,6 +38,8 @@ module Uservoice
           })();
         </script>
       EOS
+
+      script.html_safe
     end
 
   end

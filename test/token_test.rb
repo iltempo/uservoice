@@ -1,7 +1,6 @@
-require 'helper'
+require "test_helper"
 
-class UservoiceTokenTest < Test::Unit::TestCase
-
+class UservoiceTokenTest < ActiveSupport::TestCase
   def setup
     @key = 'test'
     @api_key = 'testapikey'
@@ -20,5 +19,4 @@ class UservoiceTokenTest < Test::Unit::TestCase
 
     assert_equal @user_data, data
   end
-
 end

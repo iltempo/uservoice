@@ -6,20 +6,19 @@ Rails application including single sign-on.
 == Installation
 
 === As a gem
-  gem install uservoice --source http://gemcutter.org
+  gem install uservoice
 
 === As a Rails dependency
-  config.gem 'uservoice', :source => 'http://gemcutter.org'
-
-=== As a Rails plugin
-  ./script/plugin install http://github.com/iltempo/uservoice.git
+  gem 'uservoice'
 
 
 == Configuration
 
-Generate files for your app:
-  ./script/generate uservoice <key> <forum> [<api_key>]
-Where <key> is the Uservoice account name and <forum> the id of your main forum.
+Generate config file for your app:
+  rails generate uservoice install
+Then open config/uservoice.yml and adjust settings as needed:
+* <key> is the Uservoice account name
+* <forum> is the id of your main forum
 Find both settings in widgets section of the admin interface of Uservoice.
 Your API key <api_key> can be found in the API section of the admin documentation.
 
