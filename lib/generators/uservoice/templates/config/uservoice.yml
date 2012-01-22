@@ -1,15 +1,4 @@
-uservoice_options:
-  # required
-  key: XXX>
-  host: XXX.uservoice.com
-  forum: XXX
-  # optional
-  showTab: true
-  alignment: left
-  background_color: "#f00"
-  text_color: white
-  hover_color: "#06C"
-  lang: en
-
-uservoice_api:
-  api_key: XXX
+uservoice:
+  sso_key: <Single Sign-on Key>
+  script_key: <ID of the Javascript for the Widget>
+  subdomain: <Subdomain, e.g. acme from acme.uservoice.com>

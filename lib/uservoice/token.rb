@@ -12,13 +12,13 @@ module Uservoice
 
     # Creates a sign-in token to authenticate user against
     # the uservoice service.
-    # See https://ACCOUNT.uservoice.com/admin2/docs#/sso for
+    # See http://developer.uservoice.com/docs/single-sign-on-how-to for
     # data properties available.
     #
-    def initialize(key, api_key, data)
-      data.merge!({:expires => (Time.now + 5 * 60).to_s})
+    def initialize(subdomain, sso_key, data)
+      data.merge!({:expires => (Time.zone.now.utc + 5 * 60).to_s})
 
-      crypt_key = EzCrypto::Key.with_password(key, api_key)
+      crypt_key = EzCrypto::Key.with_password(subdomain, sso_key)
       encrypted_data = crypt_key.encrypt(data.to_json)
 
       @data = CGI.escape(Base64.encode64(encrypted_data).gsub(/\n/, ''))

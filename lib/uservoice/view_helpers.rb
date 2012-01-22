@@ -15,20 +15,18 @@ module Uservoice
     # available.
     #
     def uservoice_config_javascript(options={})
-      config = uservoice_configuration['uservoice_options'].dup
-      config.merge!(options)
-      script_key = config['script_key']
-      if config[:sso] && config[:sso][:guid]
-        config.merge!({:params => {:sso => Uservoice::Token.new(
-                                                         uservoice_configuration['uservoice_options']['key'],
-                                                         uservoice_configuration['uservoice_api']['api_key'],
-                                                         config.delete(:sso)).to_s}
-        })
+      script_key = uservoice_configuration[:script_key]
+      subdomain = uservoice_configuration[:subdomain]
+      sso_key = uservoice_configuration[:sso_key]
+
+      if options[:sso] && options[:sso][:guid]
+        sso_data = options.delete(:sso)
+        options.merge!({:params => {:sso => Uservoice::Token.new(subdomain, sso_key, sso_data).to_s}})
       end
 
       script = <<-EOS
         <script type=\"text/javascript\">
-          var uvOptions = #{config.to_json};
+          var uvOptions = #{options.to_json};
           (function() {
             var uv = document.createElement('script');
             uv.type = 'text/javascript'; uv.async = true;

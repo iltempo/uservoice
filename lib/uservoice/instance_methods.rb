@@ -32,7 +32,7 @@ module Uservoice
       @@uservoice_configuration ||= begin
         config = ERB.new(IO.read(uservoice_configuration_file)).result
         configuration = YAML::load(config)
-        HashWithIndifferentAccess.new(configuration)
+        HashWithIndifferentAccess.new(configuration)[:uservoice]
       end
     end
 
