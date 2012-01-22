@@ -15,9 +15,10 @@ module Uservoice
     # available.
     #
     def uservoice_config_javascript(options={})
-      script_key = uservoice_configuration[:script_key]
-      subdomain = uservoice_configuration[:subdomain]
-      sso_key = uservoice_configuration[:sso_key]
+      config = Uservoice.config
+      script_key = config[:script_key]
+      subdomain = config[:subdomain]
+      sso_key = config[:sso_key]
 
       if options[:sso] && options[:sso][:guid]
         sso_data = options.delete(:sso)

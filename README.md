@@ -14,11 +14,21 @@ Rails application including single sign-on.
 
 ## Configuration
 
+### Via config/uservoice.yml
+
 Generate config file for your app:
 
     rails generate uservoice install
 
-Then open `config/uservoice.yml` and adjust settings as needed:
+Then open `config/uservoice.yml` and adjust settings as needed.
+
+### Via initializer
+
+Create `config/initializers/uservoice.rb` with the following content:
+
+    UserVoice.config.merge!({:script_id => "XY"})
+
+### Available settings
 
 * Required: `script_id` is the ID of the widget you want to use (create a widget under Settings > Channels > Javascript Widgets and copy the ID from the code)
 * Optional: `sso_key` is your Single Sign-on key that you find Settings > General > User Authentication > Change to "Single Sign-On"
