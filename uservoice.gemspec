@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
     ".gitignore",
     "LICENSE",
     "Rakefile",
-    "README.rdoc"
+    "README.md"
   ]
   s.test_files = Dir["test/**/*"]
 
