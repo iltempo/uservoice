@@ -15,29 +15,30 @@ module Uservoice
     # available.
     #
     def uservoice_config_javascript(options={})
-      config = uservoice_configuration['uservoice_options'].dup
-      config.merge!(options)
+      config = Uservoice.config
+      script_key = config[:script_key]
+      subdomain = config[:subdomain]
+      sso_key = config[:sso_key]
 
-      if config[:sso] && config[:sso][:guid]
-        config.merge!(:params => {:sso => Uservoice::Token.new(
-          uservoice_configuration['uservoice_options']['key'],
-          uservoice_configuration['uservoice_api']['api_key'],
-          config.delete(:sso)).to_s})
+      if options[:sso] && options[:sso][:guid]
+        sso_data = options.delete(:sso)
+        options.merge!({:params => {:sso => Uservoice::Token.new(subdomain, sso_key, sso_data).to_s}})
       end
 
-      <<-EOS
+      script = <<-EOS
         <script type=\"text/javascript\">
-          function _loadUserVoice() {
-            var s = document.createElement('script');
-            s.setAttribute('type', 'text/javascript');
-            s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
-            document.getElementsByTagName('head')[0].appendChild(s);
-          }
-          _loadSuper = window.onload;
-          window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
-          var uservoiceOptions = #{config.to_json};
+          var uvOptions = #{options.to_json};
+          (function() {
+            var uv = document.createElement('script');
+            uv.type = 'text/javascript'; uv.async = true;
+            uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/#{script_key}.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(uv, s);
+          })();
         </script>
       EOS
+
+      script.html_safe
     end
 
   end

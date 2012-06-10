@@ -1,0 +1,4 @@
+uservoice:
+  sso_key: <Single Sign-on Key>
+  script_key: <ID of the Javascript for the Widget>
+  subdomain: <Subdomain, e.g. acme from acme.uservoice.com>

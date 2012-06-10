@@ -1,0 +1,4 @@
+uservoice:
+  sso_key: test_sso_key
+  script_key: test_script_key
+  subdomain: test_domain
